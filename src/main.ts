@@ -8,9 +8,13 @@ import { aliases, mdi } from 'vuetify/iconsets/mdi';
 import AppVue from './App.vue';
 
 const Home = () => import('./components/Home.vue');
+const SearchView = () => import('./components/search/SearchView.vue');
+const SongDetailPage = () => import('./components/song-detail/SongDetailPage.vue');
 
 const routes = [
   { path: '/', component: Home },
+  { path: '/search', component: SearchView },
+  { path: '/song/:id', component: SongDetailPage, name: 'song' },
 ];
 const router = createRouter({
   history: createWebHistory(),

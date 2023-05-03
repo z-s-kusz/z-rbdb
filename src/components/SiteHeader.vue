@@ -1,9 +1,13 @@
 <script setup lang="ts">
-import Search from './Search.vue';
 </script>
 
 <template>
-    <v-app-bar title="Z-RB-DB">
-        <Search />
+    <v-app-bar>
+        <v-app-bar-title><router-link to="/">Z-RB-DB</router-link></v-app-bar-title>
+        <template v-slot:append>
+            <router-link to="/search">
+                <v-btn icon="mdi-search" color="primary"></v-btn>
+            </router-link>
+        </template>
     </v-app-bar>
 </template>
