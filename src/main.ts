@@ -5,7 +5,7 @@ import '@mdi/font/css/materialdesignicons.css';
 import './style.css';
 import { createVuetify } from 'vuetify';
 import { aliases, mdi } from 'vuetify/iconsets/mdi';
-import App from './App.vue';
+import AppVue from './App.vue';
 
 const Home = () => import('./components/Home.vue');
 
@@ -30,7 +30,7 @@ const vuetify = createVuetify({
   }
 });
 
-const app = createApp(App);
+const app = createApp(AppVue);
 app.use(router);
 app.use(vuetify);
 app.mount('#app');
