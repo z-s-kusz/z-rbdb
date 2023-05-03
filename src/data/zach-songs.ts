@@ -2,6 +2,7 @@ import Song from "../types/song";
 
 const songs: Song[] = [
     {
+        id: '0',
         title: "Ain`t Messin `Round",
         artist: "Gary Clark, Jr.",
         album: '',
@@ -27,6 +28,7 @@ const songs: Song[] = [
         },
     },
     {
+        id: '1',
         title: "Albert",
         artist: "Eddie Japan",
         album: '',
@@ -52,6 +54,7 @@ const songs: Song[] = [
         },
     },
     {
+        id: '2',
         title: "All Over You",
         artist: "Live",
         album: '',
@@ -77,6 +80,7 @@ const songs: Song[] = [
         },
     },
     {
+        id: '3',
         title: "Arabella",
         artist: "Arctic Monkeys",
         album: '',
