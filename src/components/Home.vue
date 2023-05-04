@@ -8,7 +8,7 @@ const songs: Song[] = songData;
 
 <template>
     <v-card class="hero">
-        <section class="big-about">
+        <section class="big-about text-purple">
             <p>Do we have the song you want to play?</p>
             <p>Is the song available to download?</p>
             <v-divider thickness="4" color="blue-accent-1"></v-divider>
@@ -29,9 +29,7 @@ const songs: Song[] = songData;
 }
 
 .big-about {
-    // line-height: 2rem;
     font-size: 2.3rem;
     font-weight: bold;
-    color: rgb(173, 33, 173);
 }
 </style>

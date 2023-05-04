@@ -1,5 +1,12 @@
 <template>
     <v-footer>
-        <div>Zach Kusz | 2023</div>
+        <div>&copy; Zach Kusz 2023</div>
     </v-footer>
 </template>
+
+<style scoped>
+div {
+    width: 100%;
+    text-align: center;
+}
+</style>
