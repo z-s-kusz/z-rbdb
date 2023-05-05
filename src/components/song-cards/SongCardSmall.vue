@@ -5,85 +5,66 @@ import Song from '@/types/song';
 interface Props {
     song: Song;
 }
-
 const props = defineProps<Props>();
-const song = props.song;
-const getColor = (song: Song) => {
-    let color = 'bg-';
+
+const getOwner = (song: Song) => {
+    let owner = '';
     if (song.owned) {
-        return color + 'green';
+        if (song.owner === 'Pat') owner = 'pat-owned';
+        else owner = 'zach-owned';
     }
-    return color + 'grey-darken-3';
+    return owner;
 };
-
-const cardColor = getColor(song);
-
-const expanded = ref(false);
-const toggleExpandedView = () => {
-    expanded.value = !expanded.value;
-}
+const ownedTag = getOwner(props.song);
 </script>
 
 <template>
-    <v-card class="song-card-small" :class="cardColor">
-        <div class="main-card">
-            <div class="text">
-                <p><router-link :to="{ name: 'song', params: { id: song.id } }">{{ song.title }}</router-link></p>
-                <p>{{ song.artist }}</p>
-            </div>
-            <v-btn color="secondary" variant="tonal" class="expand-btn" density="compact" @click="toggleExpandedView">
-                <v-icon :icon="expanded ? 'mdi-chevron-down' : 'mdi-chevron-up'"></v-icon>
-            </v-btn>
-            <div class="text text-right">
-                <p>{{ song.album }}</p>
-                <p>{{ song.year }}</p>
-            </div>
+    <v-card class="song-card-small" :class="ownedTag">
+        <div class="flex-row">
+            <p class="title text-h5">
+                <router-link :to="{ name: 'song', params: { id: song.id } }">
+                    {{ song.title }}
+                </router-link>
+            </p>
+            <p class="top-right">{{ song.year }}</p>
         </div>
 
-        <div v-if="expanded" class="expanded-card">
-            <div>
-                <p>{{ song.source }}</p>
-                <p>{{ song.primaryGenre }}</p>
-            </div>
-            <div class="text-right">
-                <p>{{ song.thank }}</p>
-                <p>{{ song.owner }}</p>
-            </div>
+        <div class="flex-row">
+            <p>{{ song.artist }}</p>
+            <p>{{ song.album }}</p>
         </div>
     </v-card>
 </template>
 
 <style lang="scss" scoped>
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+}
+
 .song-card-small {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 0.5rem;
 }
 
-.main-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.title {
+    flex: 1 0 50%;
 }
 
-.expanded-card {
-    border-top: 2px solid #00838F;
-    border-color: #00838F;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.top-right {
+    text-shadow: 0px 0px 4px #000000, 0px 0px 8px rgba(0, 0, 0, 0.75);
+    align-self: center;
 }
 
-.text {
-    flex: 3 0 0%;
+.zach-owned {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(225deg, #388E3C 26px, #212121 26px);
 }
 
-.text-right {
-    text-align: right;
-}
-
-.expand-btn {
-    align-self: flex-end;
+.pat-owned {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(225deg, #388E3C 22px, #3949AB 22px, #3949AB 28px, #212121 28px);
 }
 </style>
