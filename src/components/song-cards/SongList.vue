@@ -7,11 +7,10 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-const songs = props.songs;
 </script>
 
 <template>
-    <SongCardSmall v-for="song in songs" :song="song" />
+    <SongCardSmall v-for="song in props.songs" :song="song" />
 </template>
 
 <style lang="scss"></style>
