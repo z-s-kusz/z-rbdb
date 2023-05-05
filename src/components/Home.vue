@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import SongList from '@/components/song-cards/SongList.vue';
 import { useGetOwnedSongs } from '@/hooks/useGetOwnedSongs';
+import SongCardSmall from './song-cards/SongCardSmall.vue';
 
 const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
 </script>
@@ -24,7 +24,7 @@ const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
     </template>
     <!-- TODO add loading state that WON'T flash on/off if loading happens fast, which it should -->
     <template v-else>
-        <SongList :songs="songs" />
+        <SongCardSmall v-for="song in songs" :song="song" />
     </template>
 </template>
 

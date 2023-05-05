@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Song from '@/types/song';
-import SongList from '@/components/song-cards/SongList.vue';
 import songData from '@/data/zach-songs';
+import SongCardSmall from '../song-cards/SongCardSmall.vue';
 
 const songs: Song[] = songData;
 
@@ -9,7 +9,7 @@ const songs: Song[] = songData;
 
 <template>
     <template v-if="songs.length">
-        <SongList :songs="songs" />
+        <SongCardSmall v-for="song in songs" :song="song" />
     </template>
     <div v-else>
         <p>No matching songs found in rockband.</p>
