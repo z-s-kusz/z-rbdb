@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import SongList from '@/components/song-cards/SongList.vue';
-import Song from '@/types/song';
-import { useCollection, useFirestore } from 'vuefire';
-import { collection } from 'firebase/firestore';
+import { useGetOwnedSongs } from '@/hooks/useGetOwnedSongs';
 
-const db = useFirestore();
-// not really live data only needs to fetch once
-const songs = useCollection<Song>(collection(db, 'songs'), { once: true });
+const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
 </script>
 
 <template>
@@ -15,14 +11,21 @@ const songs = useCollection<Song>(collection(db, 'songs'), { once: true });
             <p>Do we have the song you want to play?</p>
             <p>Is the song available to download?</p>
             <v-divider thickness="4" color="blue-accent-1"></v-divider>
-            <p>Search the entire RB Network by clicking the icon at the top</p>
+            <p>Search the entire RB Network by clicking the icon at the top.</p>
             <v-divider thickness="4" color="blue-accent-1"></v-divider>
             <p>...or scroll, scroll, scroll through what we already have below.</p>
         </section>
         <p>* local search coming soon!</p>
     </v-card>
 
-    <SongList :songs="songs" />
+    <template v-if="error">
+        <p>Error loading... Click to retry or bother Zach</p>
+        <v-btn color="error" @Click="getSongs">Retry</v-btn>
+    </template>
+    <!-- TODO add loading state that WON'T flash on/off if loading happens fast, which it should -->
+    <template v-else>
+        <SongList :songs="songs" />
+    </template>
 </template>
 
 <style lang="scss" scoped>

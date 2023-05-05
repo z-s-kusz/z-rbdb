@@ -6,8 +6,6 @@ import './style.css';
 import { createVuetify } from 'vuetify';
 import { aliases, mdi } from 'vuetify/iconsets/mdi';
 import AppVue from './App.vue';
-import { VueFire } from 'vuefire';
-import firebaseApp from './firebase';
 
 const Home = () => import('./components/Home.vue');
 const SearchView = () => import('./components/search/SearchView.vue');
@@ -37,10 +35,6 @@ const vuetify = createVuetify({
 });
 
 const app = createApp(AppVue);
-app.use(VueFire, {
-  firebaseApp,
-  modules: [],
-});
 app.use(router);
 app.use(vuetify);
 app.mount('#app');
