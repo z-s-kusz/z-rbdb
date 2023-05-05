@@ -43,7 +43,7 @@ const toggleExpandedView = () => {
         <div v-if="expanded" class="expanded-card">
             <div>
                 <p>{{ song.source }}</p>
-                <p>{{ song.primaryGenere }}</p>
+                <p>{{ song.primaryGenre }}</p>
             </div>
             <div class="text-right">
                 <p>{{ song.thank }}</p>

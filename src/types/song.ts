@@ -7,7 +7,7 @@ export default interface Song {
     album: string;
     year: number;
     genres: string[];
-    primaryGenere: string;
+    primaryGenre: string;
     owned: boolean;
     source: 'RB4' | 'RB4:Rivals' | 'RB1' | 'RB2' | 'RB3' | 'RB:Lego' | 'RB:Greenday' | 'DLC';
     owner: 'Zach' | 'Pat' | '';
