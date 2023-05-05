@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import SongList from '@/components/song-cards/SongList.vue';
-import songData from '@/data/zach-songs';
 import Song from '@/types/song';
+import { useCollection, useFirestore } from 'vuefire';
+import { collection } from 'firebase/firestore';
 
-const songs: Song[] = songData;
+const db = useFirestore();
+// not really live data only needs to fetch once
+const songs = useCollection<Song>(collection(db, 'songs'), { once: true });
 </script>
 
 <template>
@@ -22,7 +25,7 @@ const songs: Song[] = songData;
     <SongList :songs="songs" />
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .hero {
     margin-bottom: 1rem;
     padding: 0.5rem;
