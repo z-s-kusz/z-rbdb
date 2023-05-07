@@ -1,6 +1,6 @@
 import Song from "@/types/song";
 import { ref } from "vue";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, and, or } from "firebase/firestore";
 import { db } from "@/firebase";
 
 export function useSongSearch() {
@@ -10,9 +10,14 @@ export function useSongSearch() {
 
     const search = (queryString: string) => {
         isLoading.value = true;
-        // todo open up to more than just title, should be able to configure 1 indexed field in firebase
-        // todo? add fuzzy search?
-        const searchQuery = query(collection(db, 'songs'), where('title', "==", queryString));
+
+        // firestore DOES NOT SUPPORT case insesnitive single field searches
+        // TODO use a differenet DaaS provider so I can do basic f--ing searches wthout a third party indexer
+        // https://stackoverflow.com/questions/50005587/firestore-database-query-ignore-case-case-insenstive-and-like-clause
+        const searchQuery = query(collection(db, 'songs'), or(
+            where('title', '==', queryString),   
+            where('artist', '==', queryString),
+          ));
 
         getDocs(searchQuery)
             .then((response) => {

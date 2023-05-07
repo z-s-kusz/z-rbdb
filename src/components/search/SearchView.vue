@@ -8,10 +8,14 @@ const { search, searchResults, isLoading, error } = useSongSearch();
 const waitingForSearch = ref(true);
 
 const handleSearch = (searchString: string) => {
-    console.log('parent called with', searchString);
     search(searchString);
     waitingForSearch.value = false;
 };
+
+const sadHelpMessage =
+    `Search by title or artist. Search must be exact and is Case Sensitive.
+Searching for The Black Keys will not work if you type "Black Keys" or "the black keys", it must exactly match "The Black Keys".
+* Currently researching new databases that will make search easier. *`;
 </script>
 
 <template>
@@ -32,13 +36,13 @@ const handleSearch = (searchString: string) => {
     </template>
     <template v-else-if="waitingForSearch">
         <v-card class="no-songs">
-            <p>Search for songs by title, artist, album, or song pack name. Or browse by opening the song category
-                listings.</p>
+            {{ sadHelpMessage }}
         </v-card>
     </template>
     <template v-else>
         <v-card class="no-songs">
             <p>No matching songs found in rockband.</p>
+            {{ sadHelpMessage }}
         </v-card>
     </template>
 </template>
