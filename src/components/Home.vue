@@ -7,15 +7,15 @@ const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
 
 <template>
     <v-card class="hero">
-        <section class="big-about text-purple">
+        <section class="big-about">
             <p>Do we have the song you want to play?</p>
             <p>Is the song available to download?</p>
             <v-divider thickness="4" color="blue-accent-1"></v-divider>
-            <p>Search the entire RB Network by clicking the icon at the top.</p>
+            <p>Explore the RB Network by clicking the link at the top.</p>
             <v-divider thickness="4" color="blue-accent-1"></v-divider>
             <p>...or scroll, scroll, scroll through what we already have below.</p>
         </section>
-        <p>* local search coming soon!</p>
+        <p class="text-purple">* local search coming soon!</p>
     </v-card>
 
     <template v-if="error">
@@ -37,6 +37,12 @@ const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
 .big-about {
     font-size: 2.3rem;
     font-weight: bold;
+    background: #9C27B0;
+    background: linear-gradient(45deg, #9C27B0 0%, #FF9800);
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 .card-container {

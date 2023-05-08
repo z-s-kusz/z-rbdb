@@ -47,7 +47,7 @@ const genreOptions = [
         <v-card-title>Decades</v-card-title>
         <section class="card-content">
             <router-link v-for="decade in decadeOptions" :to="`/explore/decade/${encodeURIComponent(decade)}`">
-                <v-chip size="x-large" class="decade-chip">{{ decade }}</v-chip>
+                <v-chip size="x-large" class="decade-chip" color="orange">{{ decade }}</v-chip>
             </router-link>
         </section>
     </v-card>
