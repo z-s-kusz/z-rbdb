@@ -9,6 +9,7 @@ export default interface Song {
     genres: string[];
     primaryGenre: string;
     owned: boolean;
+    packName: string;
     source: 'RB4' | 'RB4:Rivals' | 'RB1' | 'RB2' | 'RB3' | 'RB:Lego' | 'RB:Greenday' | 'DLC';
     owner: 'Zach' | 'Pat' | '';
     thank: 'Tom' | 'Eric' | 'Maria' | 'Katy' | 'Laura' | 'Scooter' | 'Zach' | 'Pat' | 'Harmonix';
