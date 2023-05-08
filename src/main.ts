@@ -10,11 +10,15 @@ import AppVue from './App.vue';
 const Home = () => import('./components/Home.vue');
 const SearchView = () => import('./components/search/SearchView.vue');
 const SongDetailPage = () => import('./components/song-detail/SongDetailPage.vue');
+const ExplorePage = () => import('./components/explore/ExplorePage.vue');
+const ExploreResults = () => import('./components/explore/ExploreResultsPage.vue');
 
 const routes = [
   { path: '/', component: Home },
   { path: '/search', component: SearchView },
   { path: '/song/:id', component: SongDetailPage, name: 'song' },
+  { path: '/explore', component: ExplorePage, },
+  { path: '/explore/:category/:query', component: ExploreResults, },
 ];
 const router = createRouter({
   history: createWebHistory(),
