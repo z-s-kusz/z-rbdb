@@ -31,7 +31,7 @@ const ownedTag = getOwner(props.song);
 
         <div class="flex-row">
             <p>{{ song.artist }}</p>
-            <p>{{ song.album }}</p>
+            <p>{{ song.primaryGenre }}</p>
         </div>
     </v-card>
 </template>
@@ -47,6 +47,7 @@ const ownedTag = getOwner(props.song);
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 0.5rem;
+    padding: 0.5rem;
 }
 
 .title {

@@ -23,9 +23,9 @@ const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
         <v-btn color="error" @Click="getSongs">Retry</v-btn>
     </template>
     <!-- TODO add loading state that WON'T flash on/off if loading happens fast, which it should -->
-    <template v-else>
+    <section class="card-container" v-else>
         <SongCardSmall v-for="song in songs" :song="song" />
-    </template>
+    </section>
 </template>
 
 <style lang="scss" scoped>
@@ -37,5 +37,9 @@ const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
 .big-about {
     font-size: 2.3rem;
     font-weight: bold;
+}
+
+.card-container {
+    padding: 0.5rem;
 }
 </style>
