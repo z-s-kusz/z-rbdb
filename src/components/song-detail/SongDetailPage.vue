@@ -2,6 +2,7 @@
 import { useGetSong } from '@/hooks/useGetSong';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+import RatingTable from './RatingTable.vue';
 
 const route = useRoute();
 const songId = route.params.id as string;
@@ -28,28 +29,19 @@ const allGenreListings = computed(() => {
 </script>
 
 <template>
-    <v-card>
+    <v-card class="card">
         <template v-if="song">
-            <v-card-title>{{ song.title }} by {{ song.artist }}</v-card-title>
-            <v-card-text>
-                <p>Album: {{ song.album }}</p>
-                <p>Year: {{ song.year }}</p>
-                <p>Genre: {{ allGenreListings }}</p>
+            <h1>{{ song.title }} by {{ song.artist }}</h1>
+            <v-divider color="blue" thickness="5"></v-divider>
+            <p>Album: {{ song.album }}</p>
+            <p>Year: {{ song.year }}</p>
+            <p>Genre: {{ allGenreListings }}</p>
 
-                <v-divider></v-divider>
-
-                <h3>Rock Band Rated Difficulty</h3>
-                <p>Vocals: {{ song.rbDifficulty.vocals }}</p>
-                <p>Guitar: {{ song.rbDifficulty.guitar }}</p>
-                <p>Bass: {{ song.rbDifficulty.bass }}</p>
-                <p>Drums: {{ song.rbDifficulty.drums }}</p>
-
-                <h3><v-icon icon="mdi-weather-cloudy"></v-icon>'Real Feel' Difficulty</h3>
-                <p>Vocals: {{ song.votedDifficulty.vocals }}</p>
-                <p>Guitar: {{ song.votedDifficulty.guitar }}</p>
-                <p>Bass: {{ song.votedDifficulty.bass }}</p>
-                <p>Drums: {{ song.votedDifficulty.drums }}</p>
-            </v-card-text>
+            <RatingTable :difficulty="song.rbDifficulty">Rock Band Difficulty</RatingTable>
+            <!-- song.votedDifficulty -->
+            <RatingTable :difficulty="{ vocals: 4, guitar: 5, bass: 2, drums: 6 }">
+                <v-icon icon="mdi-weather-cloudy"></v-icon> Real Feel Difficulty
+            </RatingTable>
         </template>
 
         <template v-else>
@@ -57,3 +49,10 @@ const allGenreListings = computed(() => {
         </template>
     </v-card>
 </template>
+
+<style lang="scss" scoped>
+.card {
+    margin: 0.5rem;
+    padding: 1rem;
+}
+</style>
