@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useGetSong } from '@/hooks/useGetSong';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import RatingTable from './RatingTable.vue';
 
@@ -25,13 +25,21 @@ const allGenreListings = computed(() => {
     return genresString;
 });
 
-
+const isAdminUser = ref(true);
 </script>
 
 <template>
     <v-card class="card">
         <template v-if="song">
-            <h1>{{ song.title }} by {{ song.artist }}</h1>
+            <header>
+                <h1>
+                    {{ song.title }} by {{ song.artist }}
+                </h1>
+                <router-link v-if="isAdminUser" :to="`./${songId}/edit`">
+                    <v-btn>Edit Song Details</v-btn>
+                </router-link>
+            </header>
+
             <v-divider color="blue" thickness="5"></v-divider>
             <p>Album: {{ song.album }}</p>
             <p>Year: {{ song.year }}</p>
@@ -51,6 +59,12 @@ const allGenreListings = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .card {
     margin: 0.5rem;
     padding: 1rem;
