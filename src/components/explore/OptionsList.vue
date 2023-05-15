@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { rbGenres } from '@/types/genres';
 const decadeOptions = [
     "1960s",
     "1970s",
@@ -8,38 +9,7 @@ const decadeOptions = [
     "2010s",
     "2020s"
 ];
-const genreOptions = [
-    'Rock',
-    'Classic Rock',
-
-    'Country',
-    'Southern Rock',
-
-    'Alternative',
-    'Indie Rock',
-
-    'Pop/Dance/Electronic',
-    'New Wave',
-    'Pop-Rock',
-    'Glam',
-
-    'Prog',
-    'Metal',
-    'Nu-Metal',
-
-    'Emo',
-    'Punk',
-    'Grunge',
-
-    'Hip-Hop/Rap',
-    'R&B/Soul/Funk',
-    'Reggae/Ska',
-    'Blues',
-
-    'Novelty',
-    'J-Rock',
-    'Classical',
-];
+const genreOptions = rbGenres;
 </script>
 
 <template>
