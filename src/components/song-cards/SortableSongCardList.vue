@@ -60,6 +60,9 @@ const sortedSongs = computed(() => {
     });
 });
 
+const toggleSwitch = (sort: SortType) => {
+    sortSwitch.value = sort;
+};
 </script>
 
 <template>
@@ -67,10 +70,10 @@ const sortedSongs = computed(() => {
     <section class="sort-container">
         <div class="switch-container">
             <span>Sort:&nbsp;</span>
-            <span :class="artistClass">Artist</span>
+            <span :class="artistClass" class="switch-option" @click="toggleSwitch('artist')">Artist</span>
             <v-switch v-model="sortSwitch" hide-details true-value="title" false-value="artist" class="switch"
                 density="compact"></v-switch>
-            <span :class="titleClass">Title</span>
+            <span :class="titleClass" class="switch-option" @click="toggleSwitch('title')">Title</span>
         </div>
         <v-text-field v-model="search" variant="underlined" single-line density="compact" hide-details clearable
             label="Search" class="search" v-if="!props.hideSearch"></v-text-field>
@@ -104,6 +107,10 @@ const sortedSongs = computed(() => {
     display: flex;
     align-items: center;
     flex: 1 1 50%;
+}
+
+.switch-option {
+    cursor: pointer;
 }
 
 .search {
