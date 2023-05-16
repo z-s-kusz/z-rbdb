@@ -65,6 +65,6 @@ const ownedTag = getOwner(props.song);
 
 .pat-owned {
     background: rgb(0, 0, 0);
-    background: linear-gradient(225deg, #388E3C 22px, #3949AB 22px, #3949AB 28px, #212121 28px);
+    background: linear-gradient(225deg, #388E3C 22px, #3949AB 22px, #3949AB 30px, #212121 30px);
 }
 </style>
