@@ -23,7 +23,7 @@ const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
     </template>
     <!-- TODO add loading state that WON'T flash on/off if loading happens fast, which it should -->
     <template v-else>
-        <SortableSongCardList :songs="songs" />
+        <SortableSongCardList :songs="songs" title="My Library" />
     </template>
 </template>
 

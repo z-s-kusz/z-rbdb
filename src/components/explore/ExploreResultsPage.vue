@@ -12,15 +12,19 @@ const { songs, error, isLoading } = useGetSongsByCategory(category, query);
 </script>
 
 <template>
-    <template v-if="songs.length">
-        <SortableSongCardList :songs="songs" />
-    </template>
+    <div v-if="songs.length" class="song-list">
+        <SortableSongCardList :songs="songs" :title="query" />
+    </div>
     <div v-else-if="isLoading" class="container">
         Loading...
     </div>
 </template>
 
 <style lang="scss" scoped>
+.song-list {
+    margin-top: 1rem;
+}
+
 .container {
     padding: 0.5rem;
 }

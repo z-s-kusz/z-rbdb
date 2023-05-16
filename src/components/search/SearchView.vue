@@ -22,7 +22,7 @@ Searching for The Black Keys will not work if you type "Black Keys" or "the blac
     <SearchForm @search="handleSearch" :isLoading="isLoading" />
 
     <div class="search-results" v-if="searchResults.length">
-        <SortableSongCardList :songs="searchResults" :hideSearch="true" />
+        <SortableSongCardList :songs="searchResults" :hideSearch="true" title="Results" />
     </div>
     <template v-else-if="isLoading">
         <v-card class="no-songs">

@@ -6,6 +6,7 @@ import SongCardSmall from './SongCardSmall.vue';
 interface Props {
     songs: Song[];
     hideSearch?: boolean;
+    title: string;
 }
 type SortType = 'artist' | 'title';
 
@@ -62,6 +63,7 @@ const sortedSongs = computed(() => {
 </script>
 
 <template>
+    <h1 class="title">{{ title }}</h1>
     <section class="sort-container">
         <div class="switch-container">
             <span>Sort:&nbsp;</span>
@@ -82,6 +84,15 @@ const sortedSongs = computed(() => {
 </template>
 
 <style lang="scss" scoped>
+.title {
+    text-align: center;
+    background: #9C27B0;
+    background: linear-gradient(45deg, #9C27B0 0%, #FF9800);
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
 .sort-container {
     padding: 0 1rem;
     display: flex;
