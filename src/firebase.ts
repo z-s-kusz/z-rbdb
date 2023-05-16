@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { ref } from "vue";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -17,9 +19,25 @@ const firebaseConfig = {
   const firebaseApp = initializeApp(firebaseConfig);
   const db = getFirestore(firebaseApp);
   const analytics = getAnalytics(firebaseApp); // TODO use analytics
+  const auth = getAuth(firebaseApp);
+
+  // auth
+  const globalUserRef = ref(null);
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      globalUserRef.value = user;
+    } else {
+        // User is signed out
+        globalUserRef.value = null;
+    }
+  });
 
   export {
     firebaseApp,
     db,
     analytics,
+    auth,
+    globalUserRef,
   };
