@@ -39,10 +39,12 @@ const navOpen = ref(false);
   grid-template-rows: auto;
   justify-content: center;
   align-items: start;
-}
 
-@media (max-width: 700px) {
-  .main-content {
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr 720px 1fr;
+  }
+
+  @media (max-width: 700px) {
     grid-template-columns: repeat(3, 1fr);
   }
 }

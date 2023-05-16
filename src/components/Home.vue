@@ -11,7 +11,7 @@ const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
             <p>Do I have the song you want to play?</p>
             <p>Is the song available to download?</p>
             <v-divider thickness="4" color="blue-accent-1"></v-divider>
-            <p>Search the RockBand Database by clicking explore at the top of the page.</p>
+            <p>Search the Rock Band Database by clicking explore at the top of the page.</p>
             <v-divider thickness="4" color="blue-accent-1"></v-divider>
             <p>...or search through what we already have below.</p>
         </section>
@@ -32,6 +32,11 @@ const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
 <style lang="scss" scoped>
 .hero {
     margin-bottom: 1rem;
+    padding: 0.5rem;
+
+    @media (min-width: 700px) {
+        padding: 2rem;
+    }
 
     p {
         padding: 0 1rem;
