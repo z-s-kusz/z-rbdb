@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useSongSearch } from '@/hooks/useSongSearch';
 import SearchForm from './SearchForm.vue';
-import SongCardSmall from '@/components/song-cards/SongCardSmall.vue';
+import SortableSongCardList from '@/components/song-cards/SortableSongCardList.vue';
 import { ref } from 'vue';
 
 const { search, searchResults, isLoading, error } = useSongSearch();
@@ -22,7 +22,7 @@ Searching for The Black Keys will not work if you type "Black Keys" or "the blac
     <SearchForm @search="handleSearch" :isLoading="isLoading" />
 
     <div class="search-results" v-if="searchResults.length">
-        <SongCardSmall v-for="song in searchResults" :song="song" />
+        <SortableSongCardList :songs="searchResults" :hideSearch="true" />
     </div>
     <template v-else-if="isLoading">
         <v-card class="no-songs">

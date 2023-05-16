@@ -5,6 +5,7 @@ import SongCardSmall from './SongCardSmall.vue';
 
 interface Props {
     songs: Song[];
+    hideSearch?: boolean;
 }
 type SortType = 'artist' | 'title';
 
@@ -70,7 +71,7 @@ const sortedSongs = computed(() => {
             <span :class="titleClass">Title</span>
         </div>
         <v-text-field v-model="search" variant="underlined" single-line density="compact" hide-details clearable
-            label="Search" class="search"></v-text-field>
+            label="Search" class="search" v-if="!props.hideSearch"></v-text-field>
     </section>
     <section class="card-container">
         <SongCardSmall v-for="song in sortedSongs" :song="song" />

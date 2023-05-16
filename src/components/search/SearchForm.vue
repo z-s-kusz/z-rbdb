@@ -19,8 +19,8 @@ const handleSearch = () => {
 <template>
     <v-card class="search-card">
         <v-form @submit.prevent="handleSearch" class="flex">
-            <v-text-field label="Search" variant="outlined" placeholder="Songs, Artists, Albums, Song Packs" hide-details
-                single-line clearable :loading="props.isLoading" v-model="searchString">
+            <v-text-field label="Search" variant="outlined" placeholder="Song | Artist" hide-details single-line clearable
+                :loading="props.isLoading" v-model="searchString">
             </v-text-field>
             <v-btn color="primary" type="submit">Search</v-btn>
         </v-form>
