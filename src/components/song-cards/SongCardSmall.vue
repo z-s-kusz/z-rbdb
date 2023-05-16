@@ -30,7 +30,7 @@ const ownedTag = getOwner(props.song);
 
         <div class="flex-row">
             <p>{{ song.artist }}</p>
-            <p>{{ song.primaryGenre }}</p>
+            <p class="right-align">{{ song.primaryGenre }}</p>
         </div>
     </v-card>
 </template>
@@ -56,6 +56,10 @@ const ownedTag = getOwner(props.song);
 .top-right {
     text-shadow: 0px 0px 4px #000000, 0px 0px 8px rgba(0, 0, 0, 0.75);
     align-self: center;
+}
+
+.right-aligned {
+    text-align: right;
 }
 
 .zach-owned {
