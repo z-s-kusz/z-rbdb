@@ -37,7 +37,7 @@ const sortedSongs = computed(() => {
     const lowerCaseSearch = search.value ? search.value.toLowerCase().trim() : '';
     if (lowerCaseSearch !== '') {
         songs = songs.filter((song) => {
-            const matchingSong = song.album.toLowerCase().includes(lowerCaseSearch) || song.artist.toLowerCase().includes(lowerCaseSearch)
+            const matchingSong = song.title.toLowerCase().includes(lowerCaseSearch) || song.artist.toLowerCase().includes(lowerCaseSearch)
             return matchingSong
         });
     }
