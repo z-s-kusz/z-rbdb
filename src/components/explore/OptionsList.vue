@@ -13,23 +13,25 @@ const genreOptions = rbGenres;
 </script>
 
 <template>
-    <v-card class="card">
-        <v-card-title>Decades</v-card-title>
-        <section class="card-content">
-            <router-link v-for="decade in decadeOptions" :to="`/explore/decade/${encodeURIComponent(decade)}`">
-                <v-chip size="x-large" class="decade-chip" color="orange">{{ decade }}</v-chip>
-            </router-link>
-        </section>
-    </v-card>
+    <div class="center-column">
+        <v-card class="card">
+            <v-card-title>Decades</v-card-title>
+            <section class="card-content">
+                <router-link v-for="decade in decadeOptions" :to="`/explore/decade/${encodeURIComponent(decade)}`">
+                    <v-chip size="x-large" class="decade-chip" color="orange">{{ decade }}</v-chip>
+                </router-link>
+            </section>
+        </v-card>
 
-    <v-card class="card">
-        <v-card-title>Genres (According to Rock Band)</v-card-title>
-        <section class="card-content">
-            <router-link v-for="genre in genreOptions" :to="`/explore/genre/${encodeURIComponent(genre)}`">
-                <v-chip size="large" class="decade-chip">{{ genre }}</v-chip>
-            </router-link>
-        </section>
-    </v-card>
+        <v-card class="card">
+            <v-card-title>Genres (According to Rock Band)</v-card-title>
+            <section class="card-content">
+                <router-link v-for="genre in genreOptions" :to="`/explore/genre/${encodeURIComponent(genre)}`">
+                    <v-chip size="large" class="decade-chip">{{ genre }}</v-chip>
+                </router-link>
+            </section>
+        </v-card>
+    </div>
 </template>
 
 <style lang="scss" scoped>

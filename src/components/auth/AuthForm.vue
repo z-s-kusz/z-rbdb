@@ -21,7 +21,7 @@ const handleSubmit = () => {
 </script>
 
 <template>
-    <v-card class="card">
+    <v-card class="card center-column">
         <v-form class="form" @submit.prevent="handleSubmit" :disabled="props.formName === 'signup'">
             <v-text-field v-model="form.email" label="Email" type="email"></v-text-field>
             <v-text-field v-model="form.password" label="Password" type="password"></v-text-field>

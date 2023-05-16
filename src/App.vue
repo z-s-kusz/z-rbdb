@@ -24,7 +24,7 @@ const navOpen = ref(false);
       </template>
     </v-navigation-drawer>
 
-    <v-main>
+    <v-main class="main-content">
       <router-view></router-view>
     </v-main>
 
@@ -33,6 +33,20 @@ const navOpen = ref(false);
 </template>
 
 <style lang="scss" scoped>
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1080px 1fr;
+  grid-template-rows: auto;
+  justify-content: center;
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  .main-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 a {
   display: block;
   padding: 1rem;

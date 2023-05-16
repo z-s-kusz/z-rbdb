@@ -6,7 +6,7 @@ const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
 </script>
 
 <template>
-    <v-card class="hero">
+    <v-card class="hero full-column">
         <section class="big-about">
             <p>Do I have the song you want to play?</p>
             <p>Is the song available to download?</p>
@@ -17,14 +17,16 @@ const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
         </section>
     </v-card>
 
-    <template v-if="error">
-        <p>Error loading... Click to retry or bother Zach</p>
-        <v-btn color="error" @Click="getSongs">Retry</v-btn>
-    </template>
-    <!-- TODO add loading state that WON'T flash on/off if loading happens fast, which it should -->
-    <template v-else>
-        <SortableSongCardList :songs="songs" title="My Library" />
-    </template>
+    <div class="center-column">
+        <template v-if="error">
+            <p>Error loading... Click to retry or bother Zach</p>
+            <v-btn color="error" @Click="getSongs">Retry</v-btn>
+        </template>
+        <!-- TODO add loading state that WON'T flash on/off if loading happens fast, which it should -->
+        <template v-else>
+            <SortableSongCardList :songs="songs" title="My Library" />
+        </template>
+    </div>
 </template>
 
 <style lang="scss" scoped>

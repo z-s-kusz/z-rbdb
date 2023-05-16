@@ -28,7 +28,7 @@ const allGenreListings = computed(() => {
 </script>
 
 <template>
-    <v-card class="card">
+    <v-card class="card center-column">
         <template v-if="song">
             <header>
                 <h1>

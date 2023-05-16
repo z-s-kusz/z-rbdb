@@ -19,32 +19,34 @@ Searching for The Black Keys will not work if you type "Black Keys" or "the blac
 </script>
 
 <template>
-    <SearchForm @search="handleSearch" :isLoading="isLoading" />
+    <section class="center-column">
+        <SearchForm @search="handleSearch" :isLoading="isLoading" />
 
-    <div class="search-results" v-if="searchResults.length">
-        <SortableSongCardList :songs="searchResults" :hideSearch="true" title="Results" />
-    </div>
-    <template v-else-if="isLoading">
-        <v-card class="no-songs">
-            <p>Loading...</p>
-        </v-card>
-    </template>
-    <template v-else-if="error">
-        <v-card class="no-songs">
-            <p>Search error. Try another search. If the issue persists bug Zach.</p>
-        </v-card>
-    </template>
-    <template v-else-if="waitingForSearch">
-        <v-card class="no-songs">
-            {{ sadHelpMessage }}
-        </v-card>
-    </template>
-    <template v-else>
-        <v-card class="no-songs">
-            <p>No matching songs found in rockband.</p>
-            {{ sadHelpMessage }}
-        </v-card>
-    </template>
+        <div class="search-results" v-if="searchResults.length">
+            <SortableSongCardList :songs="searchResults" :hideSearch="true" title="Results" />
+        </div>
+        <template v-else-if="isLoading">
+            <v-card class="no-songs">
+                <p>Loading...</p>
+            </v-card>
+        </template>
+        <template v-else-if="error">
+            <v-card class="no-songs">
+                <p>Search error. Try another search. If the issue persists bug Zach.</p>
+            </v-card>
+        </template>
+        <template v-else-if="waitingForSearch">
+            <v-card class="no-songs">
+                {{ sadHelpMessage }}
+            </v-card>
+        </template>
+        <template v-else>
+            <v-card class="no-songs">
+                <p>No matching songs found in rockband.</p>
+                {{ sadHelpMessage }}
+            </v-card>
+        </template>
+    </section>
 </template>
 
 <style lang="scss" scoped>
