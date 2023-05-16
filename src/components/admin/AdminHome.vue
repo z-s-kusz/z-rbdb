@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <h1>hello do admin things</h1>
+    <h1>You are signed in.</h1>
 </template>
 
 <style lang="scss" scoped></style>

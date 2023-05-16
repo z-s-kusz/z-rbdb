@@ -3,6 +3,7 @@ import { useGetSong } from '@/hooks/useGetSong';
 import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import RatingTable from './RatingTable.vue';
+import { globalUserRef } from '@/firebase';
 
 const route = useRoute();
 const songId = route.params.id as string;
@@ -24,8 +25,6 @@ const allGenreListings = computed(() => {
     }
     return genresString;
 });
-
-const isAdminUser = ref(true);
 </script>
 
 <template>
@@ -35,7 +34,7 @@ const isAdminUser = ref(true);
                 <h1>
                     {{ song.title }} by {{ song.artist }}
                 </h1>
-                <router-link v-if="isAdminUser" :to="`./${songId}/edit`">
+                <router-link v-if="globalUserRef" :to="`./${songId}/edit`">
                     <v-btn>Edit Song Details</v-btn>
                 </router-link>
             </header>
