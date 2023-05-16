@@ -11,10 +11,12 @@ export function useGetSongsByCategory(category: string, queryString: string) {
     const getSongsByDecade = (year: string) => {
         const yearNumber = parseInt(year.substring(0, year.length - 1));
 
-        const searchQuery = query(collection(db, 'songs'), and(
-                where('year', '<=', yearNumber + 9),
-                where('year', '>=', yearNumber)
-            )
+        const searchQuery = query(collection(db, 'songs'),
+                and(
+                    where('year', '<=', yearNumber + 9),
+                    where('year', '>=', yearNumber)
+                ),
+                /// woooow can't orderBy anything other than year and year subfields because where('year') is used
         );
         getSongs(searchQuery);
     };
