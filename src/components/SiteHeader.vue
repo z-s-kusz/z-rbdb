@@ -10,11 +10,11 @@ const navClick = () => {
     <v-app-bar>
         <v-app-bar-nav-icon variant="text" @click="navClick"></v-app-bar-nav-icon>
         <v-app-bar-title class="title">
-            <router-link to="/"><v-btn color="purple">z-rbdb</v-btn>
+            <router-link to="/"><v-btn color="primary" variant="plain" class="text-lowercase">z-rbdb</v-btn>
             </router-link></v-app-bar-title>
         <template v-slot:append>
             <router-link to="/explore">
-                <v-btn color="primary">Explore</v-btn>
+                <v-btn color="primary" variant="outlined">Explore</v-btn>
             </router-link>
         </template>
     </v-app-bar>

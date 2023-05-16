@@ -24,5 +24,12 @@ const signout = () => {
 </script>
 
 <template>
-    <v-btn color="secondary" @click="signout" :disabled="loading">Sign Out</v-btn>
+    <v-btn class="sign-out" color="secondary" @click="signout" :disabled="loading">Sign Out</v-btn>
 </template>
+
+<style lang="scss" scoped>
+.sign-out {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+</style>

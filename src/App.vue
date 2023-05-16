@@ -13,7 +13,7 @@ const navOpen = ref(false);
     <SiteHeader @toggle-nav="navOpen = !navOpen" />
 
     <v-navigation-drawer v-model="navOpen" location="bottom" temporary>
-      <RouterLink to="/">Home (All Owned Songs)</RouterLink>
+      <RouterLink to="/">Home (My Library)</RouterLink>
       <RouterLink to="/search">Search (Beta)</RouterLink>
       <template v-if="!globalUserRef">
         <RouterLink to="/login">Login</RouterLink>
