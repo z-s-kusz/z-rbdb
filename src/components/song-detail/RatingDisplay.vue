@@ -30,6 +30,6 @@ let icons = computed(() => {
 
 <template>
     <span>
-        <v-icon v-for="icon in icons" :icon="icon.icon" :color="icon.color"></v-icon>
+        <v-icon v-for="(icon, index) in icons" :icon="icon.icon" :color="icon.color" :key="index"></v-icon>
     </span>
 </template>

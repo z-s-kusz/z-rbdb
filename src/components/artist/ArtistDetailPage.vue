@@ -14,7 +14,7 @@ const { isLoading, songs } = useGetSongsByCategory('artist', artistName);
     <section class="center-column">
         <h1>{{ artistName }}</h1>
         <template v-if="songs">
-            <SongCardSmall v-for="song in songs" :song="song" />
+            <SongCardSmall v-for="song in songs" :song="song" :key="song.id" />
         </template>
         <div class="text-center" v-else>Loading...</div>
     </section>

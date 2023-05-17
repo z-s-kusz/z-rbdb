@@ -79,7 +79,7 @@ const toggleSwitch = (sort: SortType) => {
             label="Search" class="search" v-if="!props.hideSearch"></v-text-field>
     </section>
     <section class="card-container">
-        <SongCardSmall v-for="song in sortedSongs" :song="song" />
+        <SongCardSmall v-for="song in sortedSongs" :song="song" :key="song.id" />
     </section>
     <v-card class="card-container error" v-show="emptySearchMessage">
         {{ emptySearchMessage }}
