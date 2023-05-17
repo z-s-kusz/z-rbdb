@@ -26,8 +26,8 @@ const submit = async (form: Partial<Song>) => {
         primaryGenre: form.primaryGenre,
         genres: form.genres,
         source: form.source,
-        owned: form.owner !== '',
-        owner: form.owner,
+        owned: form.owner !== 'Not Owned',
+        owner: form.owner === 'Not Owned' ? '' : form.owner,
         thank: form.thank,
     };
 

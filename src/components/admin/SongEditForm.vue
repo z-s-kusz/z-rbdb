@@ -23,7 +23,7 @@ const form = reactive({
     owned: song.owned,
     packName: song.packName,
     source: song.source,
-    owner: song.owner,
+    owner: song.owner === '' ? 'Not Owned' : song.owner,
     thank: song.thank,
     harmonies: song.harmonies,
 });
@@ -56,6 +56,7 @@ const submit = async () => {
         <v-select :items="rbGenres" v-model="form.primaryGenre" label="Genre (Primary)"></v-select>
         <v-select :items="allGenres" v-model="form.genres" label="Other Genres (For Searchability)" multiple></v-select>
         <v-select :items="songSources" v-model="form.source" label="Song Source"></v-select>
+        <v-text-field v-model="form.packName" label="Parent Buy Pack (optional)"></v-text-field>
         <v-select :items="ownerOptions" v-model="form.owner" label="Who Bought The Song"></v-select>
         <v-select :items="thankOptions" v-model="form.thank" label="Thank This Person"></v-select>
         <v-btn type="submit" color="primary">Submit</v-btn>
