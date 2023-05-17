@@ -8,8 +8,7 @@ const { songs, isLoading, error, getSongs } = useGetOwnedSongs();
 <template>
     <v-card class="hero full-column">
         <section class="big-about">
-            <p>Do I have the song you want to play?</p>
-            <p>Is the song available to download?</p>
+            <p>Do I have the song you want to play? Is it available to download?</p>
             <v-divider thickness="4" color="blue-accent-1"></v-divider>
             <p>Search the Rock Band Database by clicking explore at the top of the page.</p>
             <v-divider thickness="4" color="blue-accent-1"></v-divider>
