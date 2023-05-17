@@ -1,11 +1,11 @@
 export const thankOptions = [
+    'Zach',
+    'Pat',
+    'Maria',
+    'Harmonix',
     'Tom',
     'Eric',
-    'Maria',
     'Katy',
     'Laura',
     'Scooter',
-    'Zach',
-    'Pat',
-    'Harmonix',
 ];
