@@ -12,6 +12,7 @@ const Home = () => import('./components/Home.vue');
 const SearchView = () => import('./components/search/SearchView.vue');
 const SongDetailPage = () => import('./components/song-detail/SongDetailPage.vue');
 const SongEditPage = () => import('./components/admin/SongEditPage.vue');
+const SongAddPage = () => import('./components/admin/SongAdd.vue');
 const ExplorePage = () => import('./components/explore/ExplorePage.vue');
 const ExploreResults = () => import('./components/explore/ExploreResultsPage.vue');
 const AdminPage = () => import ('./components/admin/AdminHome.vue');
@@ -28,6 +29,7 @@ const routes = [
   { path: '/explore', component: ExplorePage, },
   { path: '/explore/:category/:query', component: ExploreResults, },
   { path: '/admin', component: AdminPage, name: 'admin' },
+  { path: '/admin/add-song', component: SongAddPage },
   { path: '/artist/:artistName', component: ArtistDetailPage, name: 'artist' },
 
   { path: '/signup', component: SignUpPage },
