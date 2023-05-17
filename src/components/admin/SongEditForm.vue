@@ -5,12 +5,13 @@ import { thankOptions } from '@/types/thank-options';
 import { reactive, ref } from 'vue';
 import { useUpdateSong } from '@/hooks/useUpdateSong';
 import Song from '@/types/song';
+import { useRouter } from 'vue-router';
 
 interface Props {
     song: Song;
 }
 const props = defineProps<Props>();
-
+const router = useRouter();
 const { updateSong, isLoading } = useUpdateSong();
 
 const song = props.song; // breaks reactivity with parent but we don't need that here
@@ -65,6 +66,7 @@ const submit = async () => {
         await updateSong(songData);
         showFeedback.value = true;
         feedbackMessage.value = 'Song updated.';
+        router.push('/explore');
     } catch (error) {
         showFeedback.value = true;
         feedbackMessage.value = 'Error updating song.';

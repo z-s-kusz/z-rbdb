@@ -10,11 +10,13 @@ const { song, error, isLoading, getSong } = useGetSong(songId);
 </script>
 
 <template>
-    <template v-if="song">
-        <SongEditForm :song="song" />
-    </template>
+    <section class="center-column">
+        <template v-if="song">
+            <SongEditForm :song="song" />
+        </template>
 
-    <template v-else>
-        Loading...
-    </template>
+        <template v-else>
+            Loading...
+        </template>
+    </section>
 </template>
