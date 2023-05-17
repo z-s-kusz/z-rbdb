@@ -20,6 +20,7 @@ const navOpen = ref(false);
         <RouterLink to="/signup">Sign Up</RouterLink>
       </template>
       <template v-else>
+        <RouterLink to="/admin">Admin Page</RouterLink>
         <LogOutButton />
       </template>
     </v-navigation-drawer>

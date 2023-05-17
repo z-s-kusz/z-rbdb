@@ -2,17 +2,14 @@
 import { expandedGenres, rbGenres } from '@/types/genres';
 import { songSources } from '@/types/song-sources';
 import { thankOptions } from '@/types/thank-options';
-import { reactive, ref } from 'vue';
-import { useUpdateSong } from '@/hooks/useUpdateSong';
+import { reactive } from 'vue';
 import Song from '@/types/song';
-import { useRouter } from 'vue-router';
 
 interface Props {
     song: Song;
 }
 const props = defineProps<Props>();
-const router = useRouter();
-const { updateSong, isLoading } = useUpdateSong();
+const emit = defineEmits(['submit']);
 
 const song = props.song; // breaks reactivity with parent but we don't need that here
 
@@ -42,39 +39,13 @@ const form = reactive({
 //     bass: '',
 //     drums: '',
 // });
-
-const feedbackMessage = ref('');
-const showFeedback = ref(false);
-
-const submit = async () => {
-    if (isLoading.value) return;
-
-    const songData: Partial<Song> = {
-        id: props.song.id,
-        title: form.title,
-        artist: form.artist,
-        year: parseInt(form.year),
-        primaryGenre: form.primaryGenre,
-        genres: form.genres,
-        source: form.source,
-        owned: form.owner !== '',
-        owner: form.owner,
-        thank: form.thank,
-    };
-
-    try {
-        await updateSong(songData);
-        showFeedback.value = true;
-        feedbackMessage.value = 'Song updated.';
-        router.push('/explore');
-    } catch (error) {
-        showFeedback.value = true;
-        feedbackMessage.value = 'Error updating song.';
-    }
-
-};
 const allGenres = rbGenres.concat(expandedGenres);
 const ownerOptions = ['Zach', 'Pat', 'Not Owned'];
+
+const submit = async () => {
+    emit('submit', form);
+};
+
 </script>
 
 <template>
@@ -89,7 +60,6 @@ const ownerOptions = ['Zach', 'Pat', 'Not Owned'];
         <v-select :items="thankOptions" v-model="form.thank" label="Thank This Person"></v-select>
         <v-btn type="submit" color="primary">Submit</v-btn>
     </v-form>
-    <v-snackbar v-model="showFeedback" timeout="1200">{{ feedbackMessage }}</v-snackbar>
 </template>
 
 <style lang="scss" scoped>
