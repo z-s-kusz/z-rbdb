@@ -25,6 +25,16 @@ const allGenreListings = computed(() => {
     }
     return genresString;
 });
+
+const toLink = computed(() => {
+    const artistName = encodeURIComponent(song.value?.artist ?? '');
+    return {
+        name: 'artist',
+        params: {
+            artistName,
+        },
+    };
+});
 </script>
 
 <template>
@@ -49,6 +59,9 @@ const allGenreListings = computed(() => {
             <RatingTable :difficulty="{ vocals: 4, guitar: 5, bass: 2, drums: 6 }">
                 <v-icon icon="mdi-weather-cloudy"></v-icon> Real Feel Difficulty
             </RatingTable>
+            <RouterLink :to="toLink">
+                <v-btn color="primary">All Songs by {{ song.artist }}</v-btn>
+            </RouterLink>
         </template>
 
         <template v-else>

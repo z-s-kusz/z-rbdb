@@ -7,11 +7,12 @@ export function useGetSongsByCategory(category: string, queryString: string) {
     const songs = ref<Song[]>([]);
     const error = ref('');
     const isLoading = ref(false);
+    const collectionRef = collection(db, 'songs');
 
     const getSongsByDecade = (year: string) => {
         const yearNumber = parseInt(year.substring(0, year.length - 1));
 
-        const searchQuery = query(collection(db, 'songs'),
+        const searchQuery = query(collectionRef,
                 and(
                     where('year', '<=', yearNumber + 9),
                     where('year', '>=', yearNumber)
@@ -22,11 +23,16 @@ export function useGetSongsByCategory(category: string, queryString: string) {
     };
 
     const getSongsByGenre = (genre: string) => {
-        const searchQuery = query(collection(db, 'songs'), or(
+        const searchQuery = query(collectionRef, or(
                 where('primaryGenre', '==', genre),
                 where('genres', 'array-contains', genre)
             )
         );
+        getSongs(searchQuery);
+    };
+
+    const getSongsByArtist = (artist: string) => {
+        const searchQuery = query(collectionRef, where('artist', '==', artist));
         getSongs(searchQuery);
     };
 
@@ -56,6 +62,8 @@ export function useGetSongsByCategory(category: string, queryString: string) {
         getSongsByDecade(queryString);
     } else if (category === 'genre') {
         getSongsByGenre(queryString)
+    } else if (category === 'artist') {
+        getSongsByArtist(queryString);
     }
 
     return {

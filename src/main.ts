@@ -15,6 +15,7 @@ const SongEditPage = () => import('./components/admin/SongEditPage.vue');
 const ExplorePage = () => import('./components/explore/ExplorePage.vue');
 const ExploreResults = () => import('./components/explore/ExploreResultsPage.vue');
 const AdminPage = () => import ('./components/admin/AdminHome.vue');
+const ArtistDetailPage = () => import('./components/artist/ArtistDetailPage.vue');
 
 const SignUpPage = () => import('./components/auth/SignUpPage.vue');
 const LogInPage = () => import('./components/auth/LoginPage.vue');
@@ -27,6 +28,7 @@ const routes = [
   { path: '/explore', component: ExplorePage, },
   { path: '/explore/:category/:query', component: ExploreResults, },
   { path: '/admin', component: AdminPage, name: 'admin' },
+  { path: '/artist/:artistName', component: ArtistDetailPage, name: 'artist' },
 
   { path: '/signup', component: SignUpPage },
   { path: '/login', component: LogInPage },
